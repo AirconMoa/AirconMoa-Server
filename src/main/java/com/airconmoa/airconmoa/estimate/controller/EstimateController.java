@@ -1,0 +1,15 @@
+package com.airconmoa.airconmoa.estimate.controller;
+
+import com.airconmoa.airconmoa.estimate.dto.*;
+import com.airconmoa.airconmoa.estimate.service.EstimateService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/api/estimate")
+public class EstimateController {
+    private final EstimateService estimateService;
+}
