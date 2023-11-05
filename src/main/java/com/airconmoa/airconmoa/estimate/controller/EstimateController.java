@@ -12,4 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/estimate")
 public class EstimateController {
     private final EstimateService estimateService;
+    @PostMapping
+    public ResponseEntity<PostEstimateRes> createEstimate(@RequestBody PostEstimateReq postEstimateReq) {
+        return ResponseEntity.ok(estimateService.createEstimate(postEstimateReq));
+    }
 }

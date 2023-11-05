@@ -14,4 +14,11 @@ import org.springframework.stereotype.Service;
 public class EstimateService {
     private final EstimateRepository estimateRepository;
     private final CompanyService companyService;
+
+    public PostEstimateRes createEstimate(PostEstimateReq postEstimateReq) {
+        Company company = companyService.getCompanyById(postEstimateReq.getCompanyId());
+        Estimate estimate = new Estimate(postEstimateReq, company);
+        Estimate newEstimate = estimateRepository.save(estimate);
+        return new PostEstimateRes(newEstimate);
+    }
 }
