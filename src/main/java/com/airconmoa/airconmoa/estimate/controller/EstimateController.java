@@ -21,4 +21,9 @@ public class EstimateController {
     public ResponseEntity<GetEstimateRes> getEstimate(@PathVariable("estimateId") Long estimateId) {
         return ResponseEntity.ok(estimateService.getEstimate(estimateId));
     }
+
+    @PatchMapping("/{estimateId}")
+    public ResponseEntity<PatchEstimateRes> updateEstimateById(@PathVariable("estimateId") Long estimateId, @RequestBody PatchEstimateReq patchEstimateReq) {
+        return ResponseEntity.ok(estimateService.updateEstimateById(estimateId, patchEstimateReq));
+    }
 }

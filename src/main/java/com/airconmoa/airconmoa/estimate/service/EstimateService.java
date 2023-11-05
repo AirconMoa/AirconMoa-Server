@@ -27,4 +27,12 @@ public class EstimateService {
                 .orElseThrow(() -> new IllegalArgumentException("No such extimate"));
         return new GetEstimateRes(estimate);
     }
+
+    @Transactional
+    public PatchEstimateRes updateEstimateById(Long estimateId, PatchEstimateReq patchEstimateReq) {
+        Estimate estimate = estimateRepository.findById(estimateId)
+                .orElseThrow(() -> new IllegalArgumentException("No such estimate"));
+        estimate.updateEstimate(patchEstimateReq);
+        return new PatchEstimateRes(estimate);
+    }
 }
