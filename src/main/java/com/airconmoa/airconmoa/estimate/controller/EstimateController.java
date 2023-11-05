@@ -16,4 +16,9 @@ public class EstimateController {
     public ResponseEntity<PostEstimateRes> createEstimate(@RequestBody PostEstimateReq postEstimateReq) {
         return ResponseEntity.ok(estimateService.createEstimate(postEstimateReq));
     }
+
+    @GetMapping("/{estimateId}")
+    public ResponseEntity<GetEstimateRes> getEstimate(@PathVariable("estimateId") Long estimateId) {
+        return ResponseEntity.ok(estimateService.getEstimate(estimateId));
+    }
 }

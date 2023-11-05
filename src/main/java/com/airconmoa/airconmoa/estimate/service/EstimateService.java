@@ -21,4 +21,10 @@ public class EstimateService {
         Estimate newEstimate = estimateRepository.save(estimate);
         return new PostEstimateRes(newEstimate);
     }
+
+    public GetEstimateRes getEstimate(Long estimateId) {
+        Estimate estimate = estimateRepository.findById(estimateId)
+                .orElseThrow(() -> new IllegalArgumentException("No such extimate"));
+        return new GetEstimateRes(estimate);
+    }
 }
