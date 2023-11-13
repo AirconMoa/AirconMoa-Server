@@ -28,14 +28,19 @@ public class SecurityConfig {
         return httpSecurity
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.disable())
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(new JwtTokenFilter(userService,companyService, secretKey), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtTokenFilter(userService, companyService, secretKey), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
                             .requestMatchers(new AntPathRequestMatcher("/api/user/signup")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/user/login")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/company/signup")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/company/login")).permitAll()
+                            .requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
+                            .requestMatchers(new AntPathRequestMatcher("/swagger-resources/**")).permitAll()
+                            .requestMatchers(new AntPathRequestMatcher("/v3/api-docs/")).permitAll()
+                            .requestMatchers(new AntPathRequestMatcher("/webjars/**")).permitAll()
                             .requestMatchers(new AntPathRequestMatcher("/api/user/info")).hasAuthority(Role.USER.name())
                             .requestMatchers(new AntPathRequestMatcher("/api/company/info")).hasAuthority(Role.COMPANY.name());
                 })
