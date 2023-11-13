@@ -1,16 +1,20 @@
 package com.airconmoa.airconmoa.domain;
 
 import jakarta.persistence.*;
-import lombok.Builder;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Table(name = "company")
 @Getter
+@Setter
 @ToString(exclude = "companyId")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+
+
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
