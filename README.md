@@ -1,5 +1,5 @@
 [![Deploy to EC2](https://github.com/AirconMoa/AirconMoa-Server/actions/workflows/CICD.yml/badge.svg)](https://github.com/AirconMoa/AirconMoa-Server/actions/workflows/CICD.yml)
-<h1 align="middle"> AirconMoa </h1>ㅋ
+<h1 align="middle"> AirconMoa </h1>에어컨 모아 백엔드 레포지토리입니다
 
 ## Crew
 |Backend|Backend|Backend|
